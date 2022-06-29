@@ -1,0 +1,37 @@
+version: 2
+updates:
+  - package-ecosystem: gomod
+    directory: "/"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 5
+    reviewers:
+      - steve-winter
+    assignees:
+      - steve-winter
+    labels:
+      - "GO dependencies"
+
+  - package-ecosystem: "docker"
+    directory: "/"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    reviewers:
+      - steve-winter
+    assignees:
+      - steve-winter
+    labels:
+      - "Docker dependencies"
+     
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    open-pull-requests-limit: 5
+    schedule:
+      interval: daily
+    reviewers:
+      - steve-winter
+    assignees:
+      - steve-winter
+    labels:
+      - "Github Actions dependencies"     
