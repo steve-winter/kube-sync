@@ -1,0 +1,35 @@
+# Default false. True or false to commit changes
+DryRun: false
+# Default true. If true use k8s cluster config, if false use default
+InCluster: false
+# Required. Array of jobs
+Jobs:
+  # Required. Name of job, any string
+  - Name: Job Name
+    # Required. Collection of git config
+    Git:
+      # Required. Path for git repo. Works with https, ssh not tested. //todo - test ssh
+      Origin: url
+      # Optional. A target path to pull files to. If omitted random folder created and destroyed in current dir
+      Destination: temp
+      # Required. Username of git credential
+      Username: username
+      # Required. Access token of git credential
+      AccessToken: SUPER_SECRET_TOKEN
+      # Required. Email to attach to commit
+      Email: email@example.com
+      # Optional. Author of commit, default is "Kube Sync"
+      Author: Kube Sync
+    # Required. Collection of pod config
+    Pod:
+      # Required. Namespace of target pod
+      Namespace: hass
+      # Required. Label of target pod. If multiple pods found defer to 'UseFirst'
+      Label: app.kubernetes.io/name=label
+      # Required. Container name in pod
+      Container: container-name
+      # Required. Path to download from container
+      ContainerPath: /config
+      # Required. If true will use first Pod found that match Label + Namespace, otherwise will fail if more than 1 Pod identified
+      UseFirst: true
+
