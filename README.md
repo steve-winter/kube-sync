@@ -1,6 +1,8 @@
 # Kube Sync
 Kube Sync is a simple service that copies data from a target Pod, then commits and pushes to a target GIT repository.
 
+[![CodeQL](https://github.com/steve-winter/kube-sync/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/steve-winter/kube-sync/actions/workflows/codeql-analysis.yml)  [![Go](https://github.com/steve-winter/kube-sync/actions/workflows/go.yml/badge.svg)](https://github.com/steve-winter/kube-sync/actions/workflows/go.yml)
+
 ## Targeted Use Cases
 The initial use case was focussed on [Home Assistant](https://artifacthub.io/packages/helm/k8s-at-home/home-assistant) and [Zibgee2Mqtt](https://artifacthub.io/packages/helm/k8s-at-home/zigbee2mqtt) which run on my K3s setup. I wanted a consistent mechanism to backup and version control changes.
 
