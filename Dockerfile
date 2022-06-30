@@ -14,8 +14,8 @@ RUN go build -o /kube-sync
 ##
 ## Deploy
 ##
-FROM gcr.io/distroless/base-debian11
-
+FROM scratch
+ADD ca-certificates.crt /etc/ssl/certs/
 WORKDIR /
 
 COPY --from=build /kube-sync /kube-sync
