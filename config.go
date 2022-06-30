@@ -19,6 +19,7 @@ type GitItem struct {
 	GitAccessToken string `mapstructure:"AccessToken"`
 	GitEmail       string `mapstructure:"Email"`
 	GitAuthor      string `mapstructure:"Author"`
+	Force          bool   `mapstructure:"Force"`
 }
 
 type PodItem struct {

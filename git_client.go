@@ -7,6 +7,7 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/go-git/go-git/v5/plumbing/transport/http"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -18,6 +19,19 @@ type GitClient struct {
 }
 
 func (gitClient *GitClient) CloneRepo(origin string, destination string, username string, accessToken string, author string, email string) error {
+	if destination == "" {
+		return fmt.Errorf("destination cannot be blank")
+	}
+	if origin == "" {
+		return fmt.Errorf("origin cannot be blank")
+	}
+	if !strings.HasPrefix(origin, "http") && !strings.HasPrefix(origin, "git") {
+		return fmt.Errorf("origin must start with http or git")
+	}
+	if strings.HasPrefix(origin, "git") {
+		fmt.Println("ssh authentication not currently supported, attempting without auth")
+	}
+
 	if gitClient.repo == nil {
 		err := os.MkdirAll(destination, 0700)
 		if err != nil {
@@ -90,7 +104,7 @@ func (gitClient *GitClient) Ready() bool {
 	return true
 }
 
-func (gitClient *GitClient) CommitAndPush(accessToken string, username string) error {
+func (gitClient *GitClient) CommitAndPush(accessToken string, username string, force bool) error {
 	worktree, err := gitClient.repo.Worktree()
 	if err != nil {
 		return fmt.Errorf("error getting worktree in commit and push: %v", err)
@@ -132,7 +146,7 @@ func (gitClient *GitClient) CommitAndPush(accessToken string, username string) e
 		Auth:              &auth,
 		Progress:          nil,
 		Prune:             false,
-		Force:             false,
+		Force:             force,
 		InsecureSkipTLS:   false,
 		CABundle:          nil,
 		RequireRemoteRefs: nil,
@@ -140,6 +154,6 @@ func (gitClient *GitClient) CommitAndPush(accessToken string, username string) e
 	if err != nil {
 		return err
 	}
-	fmt.Printf("Commit %v\n", commit.String())
+	fmt.Printf("commit %v\n", commit.String())
 	return nil
 }

@@ -20,6 +20,8 @@ Jobs:
       Email: email@example.com
       # Optional. Author of commit, default is "Kube Sync"
       Author: Kube Sync
+      # Optional. Force push, default is false
+      Force: false
     # Required. Collection of pod config
     Pod:
       # Required. Namespace of target pod

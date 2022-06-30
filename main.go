@@ -71,7 +71,8 @@ func main() {
 			entry.GitItem.GitUsername,
 			entry.GitItem.GitAccessToken,
 			entry.GitItem.GitEmail,
-			entry.GitItem.GitAuthor)
+			entry.GitItem.GitAuthor,
+			entry.GitItem.Force)
 		if err != nil {
 			fmt.Printf("Failure running job: %v, error: %v\n", entry.Name, err)
 			return
@@ -108,7 +109,8 @@ func runner(name string, inCluster bool,
 	username string,
 	accessToken string,
 	email string,
-	author string) error {
+	author string,
+	force bool) error {
 	var config *rest.Config
 	var err error
 	if inCluster {
@@ -149,7 +151,8 @@ func runner(name string, inCluster bool,
 		username,
 		accessToken,
 		email,
-		author)
+		author,
+		force)
 	if err != nil {
 		return err
 	}

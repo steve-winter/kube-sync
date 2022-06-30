@@ -22,7 +22,8 @@ func Sync(kubeClient *KubeClient,
 	username string,
 	accessToken string,
 	email string,
-	author string) error {
+	author string,
+	force bool) error {
 	err := syncProcess(kubeClient,
 		gitClient,
 		origin,
@@ -36,7 +37,8 @@ func Sync(kubeClient *KubeClient,
 		username,
 		accessToken,
 		email,
-		author)
+		author,
+		force)
 	if err != nil {
 		silentCleanup(destination)
 	}
@@ -56,7 +58,8 @@ func syncProcess(kubeClient *KubeClient,
 	username string,
 	accessToken string,
 	email string,
-	author string) error {
+	author string,
+	force bool) error {
 	err := gitClient.CloneRepo(origin, destination, username, accessToken, author, email)
 	if err != nil {
 		return err
@@ -89,7 +92,7 @@ func syncProcess(kubeClient *KubeClient,
 	}
 	if !dryRyn {
 		fmt.Println("committing and pushing changes")
-		err := gitClient.CommitAndPush(accessToken, username)
+		err := gitClient.CommitAndPush(accessToken, username, force)
 		if err != nil {
 			return err
 		}
