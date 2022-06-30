@@ -9,15 +9,15 @@ RUN go mod download
 
 COPY *.go ./
 
-RUN go build -o /kube-sync
+RUN CGO_ENABLED=0 GOOS=linux go build -o /kube-sync
 
 ##
 ## Deploy
 ##
 FROM scratch
-ADD ca-certificates.crt /etc/ssl/certs/
-WORKDIR /
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
+WORKDIR /
 COPY --from=build /kube-sync /kube-sync
 
 EXPOSE 8080
