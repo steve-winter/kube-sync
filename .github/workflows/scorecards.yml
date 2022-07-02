@@ -7,11 +7,6 @@ on:
   push:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-  security-events: write
-  packages: write
-
 jobs:
   analysis:
     name: Scorecards analysis
