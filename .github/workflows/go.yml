@@ -3,11 +3,15 @@ name: Go
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - '*.go'
+      - '*.sum'
+      - '*.mod'
   pull_request:
     branches: [ "main" ]
 
-jobs:
 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
