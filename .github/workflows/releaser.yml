@@ -4,6 +4,8 @@ name: Releaser
 
 permissions:
   contents: read
+  security-events: write
+  packages: write
 
 # Controls when the workflow will run
 on:
@@ -33,11 +35,11 @@ jobs:
 
     - name: Test
       run: go test -v ./...
-    
+
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v2
       # https://github.com/docker/setup-buildx-action
-      
+
     - name: Set up Docker Buildx
       id: buildx
       uses: docker/setup-buildx-action@v2
