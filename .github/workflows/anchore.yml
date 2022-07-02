@@ -11,6 +11,9 @@
 # https://github.com/anchore/grype
 name: Anchore Container Scan
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ "main" ]

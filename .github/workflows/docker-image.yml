@@ -7,6 +7,8 @@ on:
       - '!.github'
       - '!*.md'
 
+permissions:
+  contents: read
 
 jobs:
   buildx:
