@@ -17,11 +17,11 @@ permissions:
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - '*.go'
-      - '*.sum'
-      - '*.mod'
-      - 'Dockerfile'
+#    paths:
+#      - '*.go'
+#      - '*.sum'
+#      - '*.mod'
+#      - 'Dockerfile'
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "main" ]
