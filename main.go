@@ -21,6 +21,7 @@ func main() {
 	viper.SetConfigType("yaml")
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("./config/")        // config current file path
+	viper.AddConfigPath("/etc/kube-sync/")  // config current file path
 	viper.AddConfigPath("/config/")         // config directory for kubernetes
 	viper.AddConfigPath("$HOME/.kube-sync") // call multiple times to add many search paths
 
