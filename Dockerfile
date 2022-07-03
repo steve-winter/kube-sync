@@ -20,8 +20,4 @@ COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 WORKDIR /
 COPY --from=build /kube-sync /kube-sync
 
-EXPOSE 8080
-
-USER nonroot:nonroot
-
 ENTRYPOINT ["/kube-sync"]

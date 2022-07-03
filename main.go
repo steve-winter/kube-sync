@@ -14,6 +14,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Starting kube-sync..")
 	//cmd.Execute()
 
 	viper.SetConfigName("config") // config file name without extension
@@ -28,6 +29,7 @@ func main() {
 	viper.SetDefault("DryRun", false)
 	err := viper.ReadInConfig()
 	if err != nil {
+		fmt.Printf("Unable to read config: %v\n", err)
 		return
 	}
 
