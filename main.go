@@ -14,11 +14,11 @@ import (
 )
 
 func main() {
-	fmt.Println("Starting kube-sync..")
+	fmt.Println("Starting kube-sync...")
 	//cmd.Execute()
-
 	viper.SetConfigName("config") // config file name without extension
 	viper.SetConfigType("yaml")
+
 	viper.AddConfigPath(".")
 	viper.AddConfigPath("./config/")        // config current file path
 	viper.AddConfigPath("/etc/kube-sync/")  // config current file path

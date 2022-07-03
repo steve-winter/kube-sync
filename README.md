@@ -6,6 +6,16 @@ Kube Sync is a simple service that copies data from a target Pod, then commits a
 ## Targeted Use Cases
 The initial use case was focussed on [Home Assistant](https://artifacthub.io/packages/helm/k8s-at-home/home-assistant) and [Zibgee2Mqtt](https://artifacthub.io/packages/helm/k8s-at-home/zigbee2mqtt) which run on my K3s setup. I wanted a consistent mechanism to backup and version control changes.
 
+## Getting Started
+
+### Docker
+```shell
+docker run \
+  -v <LOCAL_CONFIG>:/etc/kube-sync \
+  -v <LOCAL_KUBE_CONTEXT>:/.kube \
+  kube-sync
+```
+
 ## Design
 
 ### High Level Sequence
