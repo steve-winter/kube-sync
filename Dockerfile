@@ -1,5 +1,5 @@
 
-FROM golang:1.18-buster AS builder
+FROM golang:1.19.0-buster AS builder
 
 WORKDIR /app-build
 
