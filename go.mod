@@ -6,7 +6,7 @@ require (
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/spf13/viper v1.13.0
 	k8s.io/api v0.25.2
-	k8s.io/apimachinery v0.25.2
+	k8s.io/apimachinery v0.25.4
 	k8s.io/client-go v0.25.2
 )
 
