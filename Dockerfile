@@ -1,5 +1,5 @@
 
-FROM golang:1.20.2-buster@sha256:57dbdd5c8fe24e357b15a4ed045b0b1607a99a1465b5101304ea39e11547be27 AS builder
+FROM docker pull golang:1.21.4-bullseye AS builder
 
 WORKDIR /app-build
 
@@ -13,7 +13,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /kube-sync
 ##
 ## Deploy
 ##
-FROM gcr.io/distroless/static-debian11@sha256:6706c73aae2afaa8201d63cc3dda48753c09bcd6c300762251065c0f7e602b25
+FROM gcr.io/distroless/static-debian11@sha256:83c8a092849a9c1bd827345a64c1059b10bbc6272195393914f0b65beb57c12e
 #COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 #COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 #COPY --from=builder /etc/passwd /etc/passwd
