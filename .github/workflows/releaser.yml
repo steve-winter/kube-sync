@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4.1.0
 
     - name: Set up Go
       uses: actions/setup-go@v4
@@ -36,12 +36,12 @@ jobs:
       run: go test -v ./...
 
     - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
+      uses: docker/setup-qemu-action@v3
       # https://github.com/docker/setup-buildx-action
 
     - name: Set up Docker Buildx
       id: buildx
-      uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@v3
     -
       name: Inspect builder
       run: |
@@ -53,8 +53,8 @@ jobs:
 
     - name: Docker Login
       # You may pin to the exact commit or the version.
-      # uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b
-      uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b
+      # uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
       with:
         # Server address of Docker registry. If not set then will default to Docker Hub
 #         registry: # optional
@@ -72,7 +72,7 @@ jobs:
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
-      uses: docker/metadata-action@507c2f2dc502c992ad446e3d7a5dfbe311567a96
+      uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934
       with:
         images: ${{ secrets.DOCKER_HUB_USERNAME }}/kube-sync
 
