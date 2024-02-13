@@ -13,7 +13,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -o /kube-sync
 ##
 ## Deploy
 ##
-FROM gcr.io/distroless/static-debian11@sha256:83c8a092849a9c1bd827345a64c1059b10bbc6272195393914f0b65beb57c12e
+FROM gcr.io/distroless/static-debian11@sha256:a43abc840a7168c833a8b3e4eae0f715f7532111c9227ba17f49586a63a73848
 #COPY --from=builder /usr/share/zoneinfo /usr/share/zoneinfo
 #COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 #COPY --from=builder /etc/passwd /etc/passwd
