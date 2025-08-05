@@ -53,8 +53,8 @@ jobs:
 
     - name: Docker Login
       # You may pin to the exact commit or the version.
-      # uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
-      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+      # uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1
+      uses: docker/login-action@184bdaa0721073962dff0199f1fb9940f07167d1
       with:
         # Server address of Docker registry. If not set then will default to Docker Hub
 #         registry: # optional
